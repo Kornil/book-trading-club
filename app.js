@@ -15,7 +15,7 @@ app.use('/assets', express.static(__dirname + '/assets'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.use(express.bodyParser());
+app.use(require('body-parser').urlencoded({ extended: true }));
 app.use(express.methodOverride());
 app.use(app.router);
 
