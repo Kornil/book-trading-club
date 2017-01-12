@@ -12,37 +12,42 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link href="assets/style.css" type="text/css" rel="stylesheet" />
 
+  </head>
   <body>
-    <div id="wrapper">
-      <div id="sidebar-wrapper">
-        <ul class="sidebar-nav">
-          <li class="sidebar-brand">Start Bootstrap</li>
-          <li><a href="/">Home</a></li>
-          <li><a href="/ping">Ping</a></li>
-        </ul>
-      </div>
-    </div>
-    <div id="page-content-wrapper">
-      <div class="page-content inset">
-        <div class="row">
-        <a class="btn btn-default" id="menu-toggle" href="#"><i class="fa fa-bars"></i></a>
-          <div class="col-md-12">
-            <h1>Say something meaningful here.</h1>
-            <p class="lead">Say something worthwhile here.</p><a href="/">Go home</a><br/>
-            <a href="/ping">Ping</a>
-          </div>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
         </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li><a href="/ping">Ping</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
       </div>
-    </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Bootstrap starter template</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+      </div>
+
+    </div><!-- /.container -->
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
-      $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("active");
-      });
     </script>
   </body>
 </html>
