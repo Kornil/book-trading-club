@@ -10,12 +10,14 @@ var LocalStrategy = require('passport-local').Strategy;
 // global config
 var app = express();
 var port = process.env.PORT || 3000;
+
+app.use('/assets', express.static(__dirname + '/assets'));
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
+
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
 
 var Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
@@ -35,10 +37,6 @@ mongoose.connect(process.env.MONGO_DATABASE);
 
 // mongo model
 // var Model_Name = require('add_your_models_here');
-
-// routes
-/*app.get('/', routes.index);
-app.get('/ping', routes.ping);*/
 
 require('./routes')(app);
 

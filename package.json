@@ -21,8 +21,8 @@
   "author": "Michael Herman <michael@mherman.org>",
   "license": "MIT",
   "dependencies": {
+    "ejs": "^2.5.5",
     "express": "~3.3.4",
-    "jade": "~0.34.1",
     "mongoose": "~3.8.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",

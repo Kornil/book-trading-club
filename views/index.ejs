@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Book Trading Club</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href="assets/style.css" type="text/css" rel="stylesheet" />
+
+  <body>
+    <div id="wrapper">
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand">Start Bootstrap</li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/ping">Ping</a></li>
+        </ul>
+      </div>
+    </div>
+    <div id="page-content-wrapper">
+      <div class="page-content inset">
+        <div class="row">
+        <a class="btn btn-default" id="menu-toggle" href="#"><i class="fa fa-bars"></i></a>
+          <div class="col-md-12">
+            <h1>Say something meaningful here.</h1>
+            <p class="lead">Say something worthwhile here.</p><a href="/">Go home</a><br/>
+            <a href="/ping">Ping</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("active");
+      });
+    </script>
+  </body>
+</html>
