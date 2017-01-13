@@ -22,15 +22,6 @@ passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
-// env config
-app.configure('development', function(){
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-
-app.configure('production', function(){
-    app.use(express.errorHandler());
-});
-
 mongoose.connect(process.env.MONGO_DATABASE);
 
 // mongo model
