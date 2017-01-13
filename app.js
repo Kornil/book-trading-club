@@ -20,6 +20,7 @@ passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 
+mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGO_DATABASE);
 
 // mongo model
