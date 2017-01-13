@@ -3,6 +3,8 @@ var Account = require('../models/account');
 
 module.exports = function (app) {
 
+  app.use(require('body-parser').urlencoded({ extended: true }));
+
   app.get('/', function (req, res) {
       res.render('index', { user : req.user });
   });
