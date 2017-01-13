@@ -10,7 +10,9 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1><%= user.username || nope %></h1>
+        <% if (user) { %>
+          <h1><%= user.username %></h1>
+        <% } %>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       </div>
 
