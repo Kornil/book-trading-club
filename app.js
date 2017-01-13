@@ -1,8 +1,6 @@
 // dependencies
-var http = require('http');
 var express = require('express');
 var routes = require('./routes');
-var path = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
