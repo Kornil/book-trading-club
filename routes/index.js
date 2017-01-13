@@ -17,9 +17,7 @@ module.exports = function (app) {
             return res.render('register', { account : account });
         }
 
-        passport.authenticate('local')(req, res, function () {
-          res.redirect('/');
-        });
+        passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login'} );
     });
   });
 
@@ -27,9 +25,7 @@ module.exports = function (app) {
       res.render('login', { user : req.user });
   });
 
-  app.post('/login', passport.authenticate('local'), function(req, res) {
-      res.redirect('/');
-  });
+  app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login'}) );
 
   app.get('/logout', function(req, res) {
       req.logout();
