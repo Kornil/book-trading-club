@@ -16,8 +16,6 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 app.use(require('body-parser').urlencoded({ extended: true }));
-app.use(express.methodOverride());
-app.use(app.router);
 
 var Account = require('./models/account');
 passport.use(new LocalStrategy(Account.authenticate()));
