@@ -49,6 +49,7 @@ module.exports = function (app) {
         }
 
         passport.authenticate('local', { successRedirect: '/profile', failureRedirect: '/login'} );
+        res.redirect('/profile');
     });
   });
 

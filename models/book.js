@@ -8,4 +8,4 @@ var Book = new Schema({
   imageLink: String
 });
 
-module.exports = mongoose.model('Books', Book);
+module.exports = mongoose.model('Book', Book);
