@@ -27,7 +27,9 @@
       type: "GET",
     })
     .done(function (data) {
-      console.log(data.items);
+      for(var i = 0; i < 10; i++){
+        console.log(data.items[i].title+" - "+data.items[i].authors);
+      }
     });
     $("#search-input").val("");
     $("#submit").prop("disabled",true);
