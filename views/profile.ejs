@@ -28,7 +28,17 @@
     var $input = $('<button>', {
       class: "btn btn-default",
       id: id,
-      text: desc
+      text: desc,
+      click: function(){
+        var id = $(this).attr('id');
+        $.ajax({
+        url: '/profile/'+id,
+        type: 'POST',       
+        complete: function(){
+          window.location.reload(true);
+        }
+      });
+      }
     });
     $input.appendTo($("#book-list"));
   }

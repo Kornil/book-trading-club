@@ -1,5 +1,7 @@
 var passport = require('passport');
 var Account = require('../models/account');
+var Book = require('../models/book');
+var http = requires('http');
 
 module.exports = function (app) {
 
@@ -15,9 +17,22 @@ module.exports = function (app) {
       res.render('profile', { user : req.user });
   });
 
-  /*app.post('/profile', function (req, res) {
-      res.send("success");
-  });*/
+  app.post('/profile:id', function (req, res) {
+      var id = req.params.id;
+      http.get('https://www.googleapis.com/books/v1/volumes?q=id:'+id, function(data){
+          
+          var newBook = Book({
+            title: data.items[i].volumeInfo.title,
+            author: data.items[i].volumeInfo.authors,
+            imageLink: data.items[i].volumeInfo.imageLinks.thumbnail
+          });            
+        newBook.save(function(err) {
+          if (err) throw err;
+          res.redirect('/profile');
+        });
+
+      })
+  });
 
   app.get('/register', function(req, res) {
       res.render('register', { });
