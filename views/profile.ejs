@@ -20,6 +20,11 @@
         </div>
     </div><!-- /.container -->
   <script>
+  function createButton(id,desc){
+    var $input = $('<button class="btn btn-default" id=id value=desc /></button>');
+    $input.appendTo($("body"));
+  }
+
   $("#submit").prop("disabled",true);
   $("#submit").on('click', function(){
     $.ajax({
@@ -28,7 +33,7 @@
     })
     .done(function (data) {
       for(var i = 0; i < 10; i++){
-        console.log(data.items[i].volumeInfo.title+" - "+data.items[i].volumeInfo.authors);
+        createButton(data.items[i].id,data.items[i].volumeInfo.title+" - "+data.items[i].volumeInfo.authors)
       }
     });
     $("#search-input").val("");
