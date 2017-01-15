@@ -30,6 +30,13 @@
     });
     $("#search-input").val("");
   });
+  $('#search-input').on('input', function() {
+    if($("#search-input").val()===""){
+      $("#submit").prop("disabled",true);
+    }else{
+      $("#submit").prop("disabled",false);
+    }
+  });
   </script>
   </body>
 </html>
