@@ -25,7 +25,11 @@
     </div><!-- /.container -->
   <script>
   function createButton(id,desc){
-    var $input = $('<button class="btn btn-default" id='+id+'/>'+desc+'</button>');
+    var $input = $('<button>', {
+      class: "btn btn-default",
+      id: id,
+      text: desc
+    });
     $input.appendTo($("#book-list"));
   }
 
