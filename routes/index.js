@@ -9,7 +9,9 @@ module.exports = function (app) {
       res.render('index', { user : req.user });
   });
 
-  app.get('/profile', function (req, res) {
+  app.get('/profile',
+    require('connect-ensure-login').ensureLoggedIn(),
+    function (req, res) {
       res.render('profile', { user : req.user });
   });
 
