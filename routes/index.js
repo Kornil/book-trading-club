@@ -1,7 +1,7 @@
 var passport = require('passport');
 var Account = require('../models/account');
 var Book = require('../models/book');
-var http = requires('http');
+var http = require('http');
 
 module.exports = function (app) {
 
