@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var Book = new Schema({
   title: String,
   author: String,
-  user: String
+  user: String,
+  imageLink: String
 });
 
 module.exports = mongoose.model('Book', Book);

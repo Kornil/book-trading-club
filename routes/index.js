@@ -14,7 +14,10 @@ module.exports = function (app) {
   app.get('/profile',
     require('connect-ensure-login').ensureLoggedIn(),
     function (req, res) {
-      res.render('profile', { user : req.user });
+      Book.find({ 'username': req.user.username }, function(err, books){
+      if (err) throw err;      
+        res.render('profile', { user: req.user, books: books});
+    })
   });
 
   app.post('/profile:id', function (req, res) {
@@ -24,7 +27,8 @@ module.exports = function (app) {
           var newBook = Book({
             title: data.items[i].volumeInfo.title,
             author: data.items[i].volumeInfo.authors,
-            imageLink: data.items[i].volumeInfo.imageLinks.thumbnail
+            imageLink: data.items[i].volumeInfo.imageLinks.thumbnail,
+            user: req.user.username
           });            
         newBook.save(function(err) {
           if (err) throw err;
