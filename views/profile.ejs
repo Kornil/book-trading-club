@@ -20,6 +20,7 @@
         </div>
     </div><!-- /.container -->
   <script>
+  $("#submit").prop("disabled",true);
   $("#submit").on('click', function(){
     $.ajax({
       url: "https://www.googleapis.com/books/v1/volumes?q="+$("#search-input").val(),
@@ -29,6 +30,7 @@
       console.log(data);
     });
     $("#search-input").val("");
+    $("#submit").prop("disabled",true);
   });
   $('#search-input').on('input', function() {
     if($("#search-input").val()==""){
