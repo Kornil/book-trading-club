@@ -22,10 +22,7 @@ module.exports = function (app) {
 
   app.post('/profile/:id', function (req, res) {
       var id = req.params.id;
-      http.get({
-        host: 'https://www.googleapis.com',
-        path: '/books/v1/volumes?q=id:'+id
-      }, function(response){
+      http.get('https://www.googleapis.com/books/v1/volumes?q=id:'+id, function(response){
           response.on('end', function(){
 
             var newBook = Book({
