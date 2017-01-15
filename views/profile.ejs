@@ -40,6 +40,7 @@
       type: "GET",
     })
     .done(function (data) {
+      $("#book-list").empty();
       for(var i = 0; i < 10; i++){
         createButton(data.items[i].id,data.items[i].volumeInfo.title+" - "+data.items[i].volumeInfo.authors);
       }
