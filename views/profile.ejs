@@ -28,7 +28,7 @@
     })
     .done(function (data) {
       for(var i = 0; i < 10; i++){
-        console.log(data.items[i]/*.title+" - "+data.items[i].authors*/);
+        console.log(data.items[i].volumeInfo.title+" - "+data.items[i].volumeInfo.authors);
       }
     });
     $("#search-input").val("");
