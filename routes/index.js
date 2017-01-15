@@ -20,7 +20,7 @@ module.exports = function (app) {
     })
   });
 
-  app.post('/profile:id', function (req, res) {
+  app.post('/profile/:id', function (req, res) {
       var id = req.params.id;
       http.get('https://www.googleapis.com/books/v1/volumes?q=id:'+id, function(data){
           
@@ -47,10 +47,8 @@ module.exports = function (app) {
         if (err) {
             return res.render('register', { account : account });
         }
-
-        passport.authenticate('local', { successRedirect: '/profile', failureRedirect: '/login'} );
-        res.redirect('/profile');
     });
+    passport.authenticate('local', { successRedirect: '/profile', failureRedirect: '/login'} );
   });
 
   app.get('/login', function(req, res) {
