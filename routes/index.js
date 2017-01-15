@@ -25,9 +25,9 @@ module.exports = function (app) {
       http.get('https://www.googleapis.com/books/v1/volumes?q=id:'+id, function(data){
           
           var newBook = Book({
-            title: data.items[i].volumeInfo.title,
-            author: data.items[i].volumeInfo.authors,
-            imageLink: data.items[i].volumeInfo.imageLinks.thumbnail,
+            title: data.items[0].volumeInfo.title,
+            author: data.items[0].volumeInfo.authors,
+            imageLink: data.items[0].volumeInfo.imageLinks.thumbnail,
             user: req.user.username
           });            
         newBook.save(function(err) {
