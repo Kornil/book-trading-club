@@ -13,6 +13,10 @@ module.exports = function (app) {
       res.render('profile', { user : req.user });
   });
 
+  app.post('/profile', function (req, res) {
+      res.send("success");
+  });
+
   app.get('/register', function(req, res) {
       res.render('register', { });
   });
