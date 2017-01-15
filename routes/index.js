@@ -15,9 +15,9 @@ module.exports = function (app) {
       res.render('profile', { user : req.user });
   });
 
-  app.post('/profile', function (req, res) {
+  /*app.post('/profile', function (req, res) {
       res.send("success");
-  });
+  });*/
 
   app.get('/register', function(req, res) {
       res.render('register', { });
@@ -29,7 +29,7 @@ module.exports = function (app) {
             return res.render('register', { account : account });
         }
 
-        passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login'} );
+        passport.authenticate('local', { successRedirect: '/profile', failureRedirect: '/login'} );
     });
   });
 
@@ -37,7 +37,7 @@ module.exports = function (app) {
       res.render('login', { user : req.user });
   });
 
-  app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login'}) );
+  app.post('/login', passport.authenticate('local', { successRedirect: '/profile', failureRedirect: '/login'}) );
 
   app.get('/logout', function(req, res) {
       req.logout();
