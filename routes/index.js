@@ -21,7 +21,7 @@ module.exports = function (app) {
   });
 
   app.post('/profile', function (req, res) {
-    var data = JSON.parse(req.body.data);
+    var data = req.body;
     var newBook = Book({
       title: data.items[0].volumeInfo.title,
       author: data.items[0].volumeInfo.authors,
