@@ -48,7 +48,7 @@
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
-            data: data,     
+            data: JSON.stringify(data),     
             complete: function(){
               //window.location.reload(true);
               console.log(data)
