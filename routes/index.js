@@ -21,7 +21,10 @@ module.exports = function (app) {
 
   app.post('/profile', function (req, res) {
     var data = req.body.data;
-    var image = data.items[0].volumeInfo.imageLinks.thumbnail || "http://img1.wikia.nocookie.net/__cb20141028171337/pandorahearts/images/a/ad/Not_available.jpg";
+    var image = (data.items[0].volumeInfo.imageLinks.thumbnail)?
+    data.items[0].volumeInfo.imageLinks.thumbnail :
+    "http://img1.wikia.nocookie.net/__cb20141028171337/pandorahearts/images/a/ad/Not_available.jpg";
+
     var newBook = Book({
       title: data.items[0].volumeInfo.title,
       author: data.items[0].volumeInfo.authors,
