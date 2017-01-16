@@ -24,9 +24,9 @@ module.exports = function (app) {
     var data = req.body.data;
     console.log(data);
     var newBook = Book({
-      title: data.volumeInfo.title,
-      author: data.volumeInfo.authors,
-      imageLink: data.volumeInfo.imageLinks.thumbnail,
+      title: data.items[0].volumeInfo.title,
+      author: data.items[0].volumeInfo.authors,
+      imageLink: data.items[0].volumeInfo.imageLinks.thumbnail,
       user: req.user.username
     });            
     newBook.save(function(err) {

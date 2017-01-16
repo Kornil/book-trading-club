@@ -46,10 +46,10 @@
           $.ajax({
             url: '/profile',
             type: 'POST',
-            data: { data: data.item[0] },     
+            data: { data: data },     
             complete: function(){
               //window.location.reload(true);
-              //console.log(data)
+              //console.log(data.item[0])
             }
           });
 
