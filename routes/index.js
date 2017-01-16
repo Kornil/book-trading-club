@@ -21,12 +21,12 @@ module.exports = function (app) {
   });
 
   app.post('/profile', function (req, res) {
-    var data = req.body;
+    var data = req.body.data;
     console.log(data);
     var newBook = Book({
-      title: data.items[0].volumeInfo.title,
-      author: data.items[0].volumeInfo.authors,
-      imageLink: data.items[0].volumeInfo.imageLinks.thumbnail,
+      title: data.volumeInfo.title,
+      author: data.volumeInfo.authors,
+      imageLink: data.volumeInfo.imageLinks.thumbnail,
       user: req.user.username
     });            
     newBook.save(function(err) {

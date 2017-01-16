@@ -46,9 +46,7 @@
           $.ajax({
             url: '/profile',
             type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json; charset=UTF-8',
-            data: data,     
+            data: { data: data.item[0] },     
             complete: function(){
               //window.location.reload(true);
               //console.log(data)
