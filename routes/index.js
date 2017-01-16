@@ -1,7 +1,6 @@
 var passport = require('passport');
 var Account = require('../models/account');
 var Book = require('../models/book');
-var https = require('https');
 
 module.exports = function (app) {
 
@@ -14,7 +13,7 @@ module.exports = function (app) {
   app.get('/profile',
     require('connect-ensure-login').ensureLoggedIn(),
     function (req, res) {
-      Book.find({ 'username': req.user.username }, function(err, books){
+      Book.find({ 'user': req.user.username }, function(err, books){
       if (err) throw err;      
         res.render('profile', { user: req.user, books: books});
     })
