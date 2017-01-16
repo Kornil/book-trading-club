@@ -46,6 +46,7 @@
           $.ajax({
             url: '/profile',
             type: 'POST',
+            dataType: 'json',
             contentType: 'application/json; charset=UTF-8',
             data: data,     
             complete: function(){
