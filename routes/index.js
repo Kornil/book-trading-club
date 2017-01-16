@@ -20,25 +20,19 @@ module.exports = function (app) {
     })
   });
 
-  app.post('/profile/:id', function (req, res) {
-      var id = req.params.id;
-      https.get('https://www.googleapis.com/books/v1/volumes?q=id:'+id, function(response){
-          response.on('end', function(){
+  app.post('/profile', function (req, res) {
 
-            var newBook = Book({
-              title: data.items[0].volumeInfo.title,
-              author: data.items[0].volumeInfo.authors,
-              imageLink: data.items[0].volumeInfo.imageLinks.thumbnail,
-              user: req.user.username
-            });            
-            newBook.save(function(err) {
-              if (err) throw err;
-              res.redirect('/profile');
-            });
+    var newBook = Book({
+      title: data.items[0].volumeInfo.title,
+      author: data.items[0].volumeInfo.authors,
+      imageLink: data.items[0].volumeInfo.imageLinks.thumbnail,
+      user: req.user.username
+    });            
+    newBook.save(function(err) {
+      if (err) throw err;
+      res.redirect('/profile');
+    });
 
-          })
-
-      })
   });
 
   app.get('/register', function(req, res) {

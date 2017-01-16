@@ -28,25 +28,37 @@
         </div>
     </div><!-- /.container -->
   <script>
+  // buttons for books to add
   function createButton(id,desc){
     var $input = $('<button>', {
-      class: "btn btn-default",
+      class: "btn btn-default add-book",
       id: id,
       text: desc,
       click: function(){
         var id = $(this).attr('id');
+
         $.ajax({
-        url: '/profile/'+id,
-        type: 'POST',       
-        complete: function(){
-          window.location.reload(true);
-        }
-      });
+          url: "https://www.googleapis.com/books/v1/volumes?q=id:"+id,
+          type: "GET",
+        })
+        .done(function (data) {
+
+          $.ajax({
+            url: '/profile',
+            type: 'POST',
+            data: data,     
+            complete: function(){
+              window.location.reload(true);
+            }
+          });
+
+        });
+
       }
     });
     $input.appendTo($("#book-list"));
   }
-
+  //
   $("#submit").prop("disabled",true);
   $("#submit").on('click', function(){
     $.ajax({
