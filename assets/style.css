@@ -5,3 +5,25 @@ body {
   padding: 40px 15px;
   text-align: center;
 }
+.thumbnail {
+  float: left;
+  width: 25%;
+  height: 250px;
+  position: relative;
+}
+.thumbnail_image {
+  max-height: 180px;
+}
+@media (max-width: 480px) {
+  .thumbnail, .home {
+    width: 50%;
+  }
+}
+p {
+  font-size: 12px;
+}
+.user {
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+}
