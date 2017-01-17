@@ -26,3 +26,7 @@ p {
 .modal-title {
   display: inline-block;
 }
+.center-button {
+  text-align: center;
+  margin: 20px 0;
+}
