@@ -9,6 +9,13 @@
 
     <div class="container">
 
+        <div class="row">          
+        <div class="col-md-10 col-md-offset-1">
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Add a new book!
+          </button>
+
           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -37,17 +44,7 @@
               </div>
             </div>
           </div>
-
-        <div class="row">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-            Add a new book!
-          </button>
-        <div class="col-xs-12 col-md-4">
-          <!-- Button trigger modal -->
-          
             
-        </div>
-        <div class="col-xs-12 col-md-8">
           <% for(var i=books.length-1; i >= 0; i--) { %>
             <!--<p><%= books[i].title %></p>-->
             <div class="thumbnail">
@@ -58,7 +55,6 @@
               </div>
             </div>
           <% } %>
-        </div>
         </div>
     </div><!-- /.container -->
   <script>
