@@ -22,8 +22,8 @@ module.exports = function (app) {
   app.post('/profile', function (req, res) {
     var data = req.body.data;
     var image = (data.items[0].volumeInfo.imageLinks != undefined)?
-    data.items[0].volumeInfo.imageLinks.thumbnail :
-    "http://img1.wikia.nocookie.net/__cb20141028171337/pandorahearts/images/a/ad/Not_available.jpg";
+    "https"+data.items[0].volumeInfo.imageLinks.thumbnail.substring(4) :
+    "https://img1.wikia.nocookie.net/__cb20141028171337/pandorahearts/images/a/ad/Not_available.jpg";
 
     var newBook = Book({
       title: data.items[0].volumeInfo.title,
