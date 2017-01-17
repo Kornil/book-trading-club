@@ -23,3 +23,6 @@ p {
   bottom: 5px;
   left: 10px;
 }
+.modal-title {
+  display: inline-block;
+}
