@@ -19,6 +19,13 @@ module.exports = function (app) {
     })
   });
 
+  app.delete('/profile/:id', function(req, res){
+        Book.findByIdAndRemove(req.params.id, function(err){
+            if (err) throw err;
+            res.redirect('/profile');
+        });
+    });
+
   app.post('/profile', function (req, res) {
     var data = req.body.data;
     var image = (data.items[0].volumeInfo.imageLinks != undefined)?

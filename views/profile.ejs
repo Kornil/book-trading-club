@@ -39,10 +39,10 @@
                   </div>
 
                 </div>
-                <div class="modal-footer">
+                <!--<div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                </div>-->
               </div>
             </div>
           </div>
@@ -50,6 +50,7 @@
           <% for(var i=books.length-1; i >= 0; i--) { %>
             <!--<p><%= books[i].title %></p>-->
             <div class="thumbnail">
+              <i id="<%= books[i]._id %>" class="fa fa-times" aria-hidden="true"></i>
               <img class="thumbnail_image" src="<%= books[i].imageLink %>" alt="<%= books[i].title %>" >
               <div class="user">
                 <p> <%= books[i].author %> <br>
@@ -106,6 +107,7 @@
     $("#search-input").val("");
     $("#submit").prop("disabled",true);
   });
+  //
   $('#search-input').on('input', function() {
     if($("#search-input").val()==""){
       $("#submit").prop("disabled",true);
@@ -113,6 +115,17 @@
       $("#submit").prop("disabled",false);
     }
   });
+  //
+  $('.fa-times').on('click', function(){
+      var id = $(this).attr('id');
+      $.ajax({
+        url: '/profile/'+id,
+        type: 'DELETE',       
+        complete: function(){
+          window.location.reload(true);
+        }
+      });
+    });
   </script>
   </body>
 </html>
