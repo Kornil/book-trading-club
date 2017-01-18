@@ -71,7 +71,7 @@
         var id = $(this).attr('id');
 
         $.ajax({
-          url: "https://www.googleapis.com/books/v1/volumes?q=id:"+id,
+          url: "https://www.googleapis.com/books/v1/volumes/"+id,
           type: "GET",
         })
         .done(function (data) {
