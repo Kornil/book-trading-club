@@ -28,13 +28,13 @@ module.exports = function (app) {
 
   app.post('/profile', function (req, res) {
     var data = req.body.data;
-    var image = (data.items[0].volumeInfo.imageLinks != undefined)?
-    "https"+data.items[0].volumeInfo.imageLinks.thumbnail.substring(4) :
+    var image = (data.volumeInfo.imageLinks != undefined)?
+    "https"+data.volumeInfo.imageLinks.thumbnail.substring(4) :
     "https://img1.wikia.nocookie.net/__cb20141028171337/pandorahearts/images/a/ad/Not_available.jpg";
 
     var newBook = Book({
-      title: data.items[0].volumeInfo.title,
-      author: data.items[0].volumeInfo.authors,
+      title: data.volumeInfo.title,
+      author: data.volumeInfo.authors,
       imageLink: image,
       user: req.user.username
     });            
