@@ -9,12 +9,16 @@
 
     <div class="container">
 
-      <div class="starter-template">
-        <% if (user) { %>
-          <h1><%= user.username %></h1>
-        <% } %>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
+      <% for(var i=books.length-1; i >= 0; i--) { %>
+            <div class="thumbnail">
+              <i id="<%= books[i]._id %>" class="fa fa-times" aria-hidden="true"></i>
+              <img class="thumbnail_image" src="<%= books[i].imageLink %>" alt="<%= books[i].title %>" >
+              <div class="user">
+                <p> <%= books[i].author %> <br>
+                <%= books[i].title %> </p>
+              </div>
+            </div>
+          <% } %>
 
     </div><!-- /.container -->
 

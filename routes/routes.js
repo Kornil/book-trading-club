@@ -7,7 +7,10 @@ module.exports = function (app) {
   app.use(require('body-parser').urlencoded({ extended: true }));
 
   app.get('/', function (req, res) {
-      res.render('index', { user : req.user });
+      Book.find({ 'user': !req.user.username }, function(err, books){
+      if (err) throw err;      
+        res.render('index', { user: req.user, books: books});
+      })
   });
 
   app.get('/profile',
@@ -16,7 +19,7 @@ module.exports = function (app) {
       Book.find({ 'user': req.user.username }, function(err, books){
       if (err) throw err;      
         res.render('profile', { user: req.user, books: books});
-    })
+      })
   });
 
   app.delete('/profile/:id', function(req, res){
@@ -68,10 +71,6 @@ module.exports = function (app) {
   app.get('/logout', function(req, res) {
       req.logout();
       res.redirect('/');
-  });
-
-  app.get('/ping', function(req, res){
-      res.send("pong!", 200);
   });
 
 }

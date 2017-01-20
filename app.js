@@ -1,6 +1,6 @@
 // dependencies
 var express = require('express');
-var routes = require('./routes');
+var routes = require('./routes/routes');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -32,7 +32,7 @@ mongoose.connect(process.env.MONGO_DATABASE);
 // mongo model
 // var Model_Name = require('add_your_models_here');
 
-require('./routes')(app);
+routes(app);
 
 // run server
 app.listen(port);
