@@ -8,16 +8,15 @@
     <% include ./partials/nav %>
 
     <div class="container">
-
+      <h2>Library:</h2>
       <% for(var i=books.length-1; i >= 0; i--) { %>
         <% if(!user || user.username !== books[i].user) { %>
             <div class="thumbnail">
-              <i id="<%= books[i]._id %>" class="fa fa-times" aria-hidden="true"></i>
               <img class="thumbnail_image" src="<%= books[i].imageLink %>" alt="<%= books[i].title %>" >
               <div class="user">
                 <p> <%= books[i].author %> <br>
                 <%= books[i].title %> <br>
-                Owned by <%= books[i].user %></p>
+                Owned by <b><%= books[i].user %></b></p>
               </div>
             </div>
           <% } %>
