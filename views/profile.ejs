@@ -120,16 +120,8 @@
         createButton(data.items[i].id,data.items[i].volumeInfo.title+" - "+data.items[i].volumeInfo.authors);
       }
     });
-    $("#search-input").val("");
-    $("#submit").prop("disabled",true);
-  });
-  //
-  $('#search-input').on('input', function() {
-    if($("#search-input").val()==""){
-      $("#submit").prop("disabled",true);
-    }else{
-      $("#submit").prop("disabled",false);
-    }
+    /*$("#search-input").val("");
+    $("#submit").prop("disabled",true);*/
   });
   //
   $('.fa-times').on('click', function(){
