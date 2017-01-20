@@ -17,19 +17,19 @@ module.exports = function (app) {
     require('connect-ensure-login').ensureLoggedIn(),
     function (req, res) {
       Book.find({ 'user': req.user.username }, function(err, books){
-      if (err) throw err;
-        if(!books.length)
-          res.send(req.user.username +" does not exist.");
-        else
-          res.render('profile', { user: req.user, books: books});
+        if (err) throw err;        
+        res.render('profile', { user: req.user, books: books});
       })
   });
 
   app.get('/profile/:user', function(req, res){
     Book.find({ 'user': req.params.user }, function(err, books){
       if (err) throw err;
+      (!books.length) ?
+        res.send(req.user.username +" does not exist.")
+        :
         res.render('user', { user: req.user, books: books, reqUser: req.params.user});
-      })
+    })
   });
 
   app.delete('/profile/:id', function(req, res){
