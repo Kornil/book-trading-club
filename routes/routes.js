@@ -7,10 +7,10 @@ module.exports = function (app) {
   app.use(require('body-parser').urlencoded({ extended: true }));
 
   app.get('/', function (req, res) {
-      if(user){
-        user = !req.user.username;
-      }else{
+      if(!user){
         user = "";
+      }else{
+        user = !req.user.username;        
       }
       Book.find({ 'user': user }, function(err, books){
       if (err) throw err;      
