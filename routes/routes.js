@@ -7,7 +7,7 @@ module.exports = function (app) {
   app.use(require('body-parser').urlencoded({ extended: true }));
 
   app.get('/', function (req, res) {
-      if(!user){
+      if(!req.user){
         user = "";
       }else{
         user = !req.user.username;        
