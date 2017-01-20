@@ -9,7 +9,7 @@ module.exports = function (app) {
   app.get('/', function (req, res) {
       if(user){
         user = !req.user.username;
-      }ele{
+      }else{
         user = "";
       }
       Book.find({ 'user': user }, function(err, books){
