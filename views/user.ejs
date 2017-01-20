@@ -8,18 +8,15 @@
     <% include ./partials/nav %>
 
     <div class="container">
-      <h2>Our users Library</h2>
+      <h2><%= reqUser.username %> Profile</h2>
       <% for(var i=books.length-1; i >= 0; i--) { %>
-        <% if(!user || user.username !== books[i].user) { %>
             <div class="thumbnail">
               <img class="thumbnail_image" src="<%= books[i].imageLink %>" alt="<%= books[i].title %>" >
               <div class="user">
                 <p> <%= books[i].author %> <br>
-                <%= books[i].title %> <br>
-                Owned by <a href="/profile/<%= books[i].user %>"><b><%= books[i].user %></b></a></p>
+                <%= books[i].title %> </p>
               </div>
             </div>
-          <% } %>
         <% } %>
 
     </div><!-- /.container -->

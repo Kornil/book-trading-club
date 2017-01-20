@@ -17,11 +17,9 @@ body {
 }
 p {
   font-size: 12px;
-  margin: 5px 0;
 }
 .user {
   position: absolute;
-  bottom: 5px;
   left: 10px;
 }
 .modal-title {
@@ -48,4 +46,7 @@ p {
 }
 .fa-times:hover {
   opacity: 0.8;
+}
+.user a {
+  color: #000;
 }

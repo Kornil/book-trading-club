@@ -8,7 +8,7 @@ module.exports = function (app) {
 
   app.get('/', function (req, res) {
       Book.find({}, function(err, books){
-      if (err) throw err;      
+      if (err) throw err;
         res.render('index', { user: req.user, books: books});
       })
   });
@@ -19,6 +19,13 @@ module.exports = function (app) {
       Book.find({ 'user': req.user.username }, function(err, books){
       if (err) throw err;      
         res.render('profile', { user: req.user, books: books});
+      })
+  });
+
+  app.get('/profile/:user', function(req, res){
+    Book.find({ 'user': req.param.user }, function(err, books){
+      if (err) throw err;      
+        res.render('user', { user: req.user, books: books, reqUser: req.param.user});
       })
   });
 
