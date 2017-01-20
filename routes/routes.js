@@ -19,8 +19,9 @@ module.exports = function (app) {
       Book.find({ 'user': req.user.username }, function(err, books){
       if (err) throw err;
         if(!books.length)
-          res.send(req.user.username +"does not exist.");
-        res.render('profile', { user: req.user, books: books});
+          res.send(req.user.username +" does not exist.");
+        else
+          res.render('profile', { user: req.user, books: books});
       })
   });
 
