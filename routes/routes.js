@@ -7,7 +7,12 @@ module.exports = function (app) {
   app.use(require('body-parser').urlencoded({ extended: true }));
 
   app.get('/', function (req, res) {
-      Book.find({ 'user': !req.user.username }, function(err, books){
+      if(user){
+        user = !req.user.username;
+      }ele{
+        user = "";
+      }
+      Book.find({ 'user': user }, function(err, books){
       if (err) throw err;      
         res.render('index', { user: req.user, books: books});
       })
