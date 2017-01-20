@@ -26,7 +26,7 @@ module.exports = function (app) {
     Book.find({ 'user': req.params.user }, function(err, books){
       if (err) throw err;
       (!books.length) ?
-        res.send(req.user.username +" does not exist.")
+        res.send(req.params.username +" does not exist.")
         :
         res.render('user', { user: req.user, books: books, reqUser: req.params.user});
     })
