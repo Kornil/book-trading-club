@@ -24,7 +24,7 @@ module.exports = function (app) {
 
   app.get('/profile/:user', function(req, res){
     Book.find({ 'user': req.param.user }, function(err, books){
-      if (err) throw err;      
+      if (err) throw err;
         res.render('user', { user: req.user, books: books, reqUser: req.param.user});
       })
   });
