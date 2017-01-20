@@ -17,7 +17,9 @@ module.exports = function (app) {
     require('connect-ensure-login').ensureLoggedIn(),
     function (req, res) {
       Book.find({ 'user': req.user.username }, function(err, books){
-      if (err) throw err;      
+      if (err) throw err;
+        if(!books.length)
+          res.send(req.user.username +"does not exist.");
         res.render('profile', { user: req.user, books: books});
       })
   });
