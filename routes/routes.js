@@ -24,16 +24,15 @@ module.exports = function (app) {
 
   app.get('/profile/:user', function(req, res){
 
-    var reqUser = req.params.user;
-    Account.find({ 'username': reqUser }, function(err, account){
+    Account.find({ 'username': req.params.user }, function(err, account){
       if (err) throw err;
-      Book.find({ 'user': account.username }, function(err, books){
-        if (err) throw err;
-        (!books.length) ?
-          res.send(account.username +" does not exist.")
-          :
+      (!account.length) ?
+        res.send(req.params.user +" does not exist.")
+        :
+        Book.find({ 'user': account.username }, function(err, books){
+          if (err) throw err;
           res.render('user', { user: req.user, books: books, reqUser: account});
-      })
+        });
     });
   });
 
