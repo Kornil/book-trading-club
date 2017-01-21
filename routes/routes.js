@@ -38,13 +38,16 @@ module.exports = function (app) {
 
     Account.findOne({'username': req.params.user }).exec()
       .then(function(reqUser){
-        return (!reqUser.length) ?
+        if (!reqUser.length) 
           res.send(req.params.user +" does not exist.")
-          :
-          Book.find({ 'user': reqUser.username }).exec()
+        else
+          return Book.find({ 'user': reqUser.username }).exec()
             .then(function(books){
               res.render('user', { user: req.user, books: books, reqUser: reqUser});
             })
+      })
+      .then(undefined, function(err){
+        throw err;
       })
 
   });
