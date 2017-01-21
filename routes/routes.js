@@ -38,7 +38,7 @@ module.exports = function (app) {
 
     Account.findOne({'username': req.params.user }).exec()
       .then(function(reqUser){
-        if (!reqUser.length) 
+        if (!reqUser)
           res.send(req.params.user +" does not exist.")
         else
           return Book.find({ 'user': reqUser.username }).exec()
@@ -46,9 +46,9 @@ module.exports = function (app) {
               res.render('user', { user: req.user, books: books, reqUser: reqUser});
             })
       })
-      .then(undefined, function(err){
+      .catch(function(err){
         throw err;
-      })
+      });
 
   });
 
