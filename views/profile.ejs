@@ -117,8 +117,7 @@
   $("#search").submit(function(e){
     $.ajax({
       url: "https://www.googleapis.com/books/v1/volumes?q="+$("#search-input").val(),
-      type: "GET",
-      data: { country: country , city: city }
+      type: "GET"
     })
     .done(function (data) {
       for(var i = 0; i < 10; i++){
@@ -134,6 +133,7 @@
     $.ajax({
       url: "/profile/update/<%= user.username %>",
       type: "POST",
+      data: { country: country , city: city }
     })
     .done(function (data) {
       window.location.reload(true);
