@@ -24,7 +24,7 @@ module.exports = function (app) {
 
   app.get('/profile/:user', function(req, res){
 
-    Account.find({ 'username': req.params.user }, function(err, account){
+    /*Account.find({ 'username': req.params.user }, function(err, account){
       if (err) throw err;
       var reqUser = account;
       (!account.length) ?
@@ -34,7 +34,19 @@ module.exports = function (app) {
           if (err) throw err;
           res.render('user', { user: req.user, books: books, reqUser: account});
         });
-    });
+    });*/
+
+    Account.findOne({'username': req.params.user }).exec()
+      .then(function(reqUser){
+        return (!reqUser.length) ?
+          res.send(req.params.user +" does not exist.")
+          :
+          Book.find({ 'user': reqUser.username }).exec()
+            .then(function(books){
+              res.render('user', { user: req.user, books: books, reqUser: reqUser});
+            })
+      })
+
   });
 
   app.delete('/profile/:id', function(req, res){
