@@ -9,7 +9,7 @@
 
     <div class="container">
       <h2><%= reqUser.username %> library</h2>
-      <h4>From <%= reqUser.country %>, <%= reqUser.city %>.</h4>
+      <h4>From <%= reqUser.city %>, <%= reqUser.country %>.</h4>
       <% for(var i=books.length-1; i >= 0; i--) { %>
             <div class="thumbnail">
               <img class="thumbnail_image" src="<%= books[i].imageLink %>" alt="<%= books[i].title %>" >
