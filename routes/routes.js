@@ -29,7 +29,7 @@ module.exports = function (app) {
       (!account.length) ?
         res.send(req.params.user +" does not exist.")
         :
-        Book.find({ 'user': account.username }, function(err, books){
+        Book.find({ 'user': req.params.user }, function(err, books){
           if (err) throw err;
           res.render('user', { user: req.user, books: books, reqUser: account});
         });
