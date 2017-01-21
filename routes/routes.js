@@ -28,15 +28,14 @@ module.exports = function (app) {
     Account.find({ 'username': reqUser }, function(err, account){
       if (err) throw err;
       reqUser = account;
+      Book.find({ 'user': reqUser.username }, function(err, books){
+        if (err) throw err;
+        (!books.length) ?
+          res.send(reqUser.username +" does not exist.")
+          :
+          res.render('user', { user: req.user, books: books, reqUser: reqUser});
+      })
     });
-
-    Book.find({ 'user': reqUser.username }, function(err, books){
-      if (err) throw err;
-      (!books.length) ?
-        res.send(reqUser +" does not exist.")
-        :
-        res.render('user', { user: req.user, books: books, reqUser: reqUser});
-    })
   });
 
   app.delete('/profile/:id', function(req, res){
