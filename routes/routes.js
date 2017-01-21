@@ -27,13 +27,12 @@ module.exports = function (app) {
     var reqUser = req.params.user;
     Account.find({ 'username': reqUser }, function(err, account){
       if (err) throw err;
-      reqUser = account;
-      Book.find({ 'user': reqUser.username }, function(err, books){
+      Book.find({ 'user': account.username }, function(err, books){
         if (err) throw err;
         (!books.length) ?
-          res.send(reqUser.username +" does not exist.")
+          res.send(acount.username +" does not exist.")
           :
-          res.render('user', { user: req.user, books: books, reqUser: reqUser});
+          res.render('user', { user: req.user, books: books, reqUser: account});
       })
     });
   });
