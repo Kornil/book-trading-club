@@ -59,6 +59,14 @@ module.exports = function (app) {
 
   });
 
+  app.post('/profile/update/:id', function (req, res){
+    var id = req.params.id;
+    Account.findOneAndUpdate({username: id}, {$set: {country: req.body.country, city: req.body.city }},function(err, doc){
+      if (err) throw err;
+      res.redirect('/profile');
+    });
+  })
+
   app.get('/register', function(req, res) {
       res.render('register', { });
   });

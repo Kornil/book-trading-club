@@ -8,7 +8,8 @@
     <% include ./partials/nav %>
 
     <div class="container">
-
+      <p>country:<%= user.country %></p>
+      <p>city:<%= user.city %></p>
       <div class="center-button">
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
           Add a new book!
@@ -30,8 +31,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">
-                  
+                <div class="modal-body">                  
                   <form id="search">
                     <div class="input-group">
                       <input class="form-control" type="text" value="" id="search-input" placeholder="book title" required>
@@ -42,13 +42,12 @@
                   <div id="book-list">
                   <!-- search result -->
                   </div>
-
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="#profileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -58,7 +57,15 @@
                   </button>
                 </div>
                 <div class="modal-body">
-
+                  <form id="update">
+                    <div class="input-group">
+                      <input class="form-control" type="text" value="" id="country-input" placeholder="Your country" required>
+                    </div>
+                    <div class="input-group">
+                      <input class="form-control" type="text" value="" id="city-input" placeholder="Your city" required>
+                    </div>
+                    <button id="submit" class="btn btn-default">Submit</button>
+                  </form>
                 </div>
               </div>
             </div>
@@ -85,7 +92,6 @@
       text: desc,
       click: function(){
         var id = $(this).attr('id');
-
         $.ajax({
           url: "https://www.googleapis.com/books/v1/volumes/"+id,
           type: "GET",
@@ -108,21 +114,31 @@
     $input.appendTo($("#book-list"));
   }
   //
-  //$("#submit").prop("disabled",true);
   $("#search").submit(function(e){
     $.ajax({
       url: "https://www.googleapis.com/books/v1/volumes?q="+$("#search-input").val(),
       type: "GET",
+      data: { country: country , city: city }
     })
     .done(function (data) {
-      $("#book-list").empty();
       for(var i = 0; i < 10; i++){
         createButton(data.items[i].id,data.items[i].volumeInfo.title+" - "+data.items[i].volumeInfo.authors);
       }
     });
     e.preventDefault();
-    /*$("#search-input").val("");
-    $("#submit").prop("disabled",true);*/
+  });
+  //
+  $("#update").submit(function(e){
+    var country=$("#country-input").val();
+    var city=$("#city-input").val();
+    $.ajax({
+      url: "/profile/update/<%= user.username %>",
+      type: "POST",
+    })
+    .done(function (data) {
+      window.location.reload(true);
+    });
+    e.preventDefault();
   });
   //
   $('.fa-times').on('click', function(){
