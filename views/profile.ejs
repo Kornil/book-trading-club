@@ -32,7 +32,7 @@
                 </div>
                 <div class="modal-body">
                   
-                  <form>
+                  <form id="search">
                     <div class="input-group">
                       <input class="form-control" type="text" value="" id="search-input" placeholder="book title" required>
                     </div>
@@ -109,7 +109,7 @@
   }
   //
   //$("#submit").prop("disabled",true);
-  $("#submit").on('click', function(){
+  $("#search").submit(function(){
     $.ajax({
       url: "https://www.googleapis.com/books/v1/volumes?q="+$("#search-input").val(),
       type: "GET",
