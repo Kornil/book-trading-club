@@ -98,7 +98,7 @@
               </div>
               <% if (books[i].wantedBy.length) { %>
               <i class="fa fa-envelope" aria-hidden="true"data-toggle="modal"
-              data-target="#conversationsModal" onClick="message(<%= books[i] %>)"></i>
+              data-target="#conversationsModal" onClick="message(<%= books[i].wantedBy %>)"></i>
               <% } %>
             </div>
           <% } %>
@@ -173,8 +173,8 @@
     });
   });
   function message(obj){
-    $("#traderName").text(obj.wantedBy[0]);
-    $("#traderText").text(obj.wantedBy[1]);
+    $("#traderName").text(obj[0]);
+    $("#traderText").text(obj[1]);
   }
   </script>
   </body>
