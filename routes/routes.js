@@ -75,7 +75,7 @@ module.exports = function (app) {
   });
 
   app.post('/trade/:bookid', function(req, res){
-    Book.findOneAndUpdate({_id: req.params.bookid}, {$push: {wantedBy: [req.body.trader, req.body.commet]} }, function(err, doc){
+    Book.findOneAndUpdate({_id: req.params.bookid}, {$push: {wantedBy: [req.body.trader, req.body.comment]} }, function(err, doc){
       if (err) throw err;
       res.redirect('/');
     });
