@@ -81,7 +81,8 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <p>hello</p>
+                  <h4>From: <p id="traderName"></p></h4>
+                  <p id="traderText"></p>
                 </div>
               </div>
             </div>
@@ -96,7 +97,8 @@
                 <%= books[i].title %> </p>
               </div>
               <% if (books[i].wantedBy.length) { %>
-              <i class="fa fa-envelope" aria-hidden="true" data-toggle="modal" data-target="#conversationsModal"></i>
+              <i class="fa fa-envelope" aria-hidden="true"data-toggle="modal"
+              data-target="#conversationsModal" onClick="message(<%= books[i] %>)"></i>
               <% } %>
             </div>
           <% } %>
@@ -161,15 +163,19 @@
   });
   //
   $('.fa-times').on('click', function(){
-      var id = $(this).attr('id');
-      $.ajax({
-        url: '/profile/'+id,
-        type: 'DELETE',       
-        complete: function(){
-          window.location.reload(true);
-        }
-      });
+    var id = $(this).attr('id');
+    $.ajax({
+      url: '/profile/'+id,
+      type: 'DELETE',       
+      complete: function(){
+        window.location.reload(true);
+      }
     });
+  });
+  function message(obj){
+    $("#traderName").text(obj.wantedBy[0]);
+    $("#traderText").text(obj.wantedBy[1]);
+  }
   </script>
   </body>
 </html>
