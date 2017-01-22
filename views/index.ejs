@@ -8,11 +8,38 @@
     <% include ./partials/nav %>
 
     <div class="container">
+
+      <!-- trade modal -->
+      <% if (typeof user !== "undefined") { %>
+      <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="exampleModalLabel">Send trade request</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form class="trade_form" id="tradeForm" action="/" method="post">
+                <div class="input-group">
+                  <input class="form-control" type="text" value="<%= user.username %>" name="trader" readonly>
+                </div>
+                <label for="comment">Tell the book owner how to contact you:</label>
+                <textarea class="form-control" rows="6" name="comment" placeholder="I'd like your book I'm free on saturday from 9 to 5. I live on the moon we can meet halfway, my mail is yada@yada.moon" required></textarea>
+                <button id="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+
       <h2>Our users Library</h2>
       <% for(var i=books.length-1; i >= 0; i--) { %>
         <% if(!user || user.username !== books[i].user) { %>
             <div class="thumbnail">
-              <a data-toggle="modal" data-target="#tradeModal">
+              <a data-toggle="modal" data-target="#tradeModal" id="<%= books[i]._id %>">
                 <img class="thumbnail_image" src="<%= books[i].imageLink %>" alt="<%= books[i].title %>" >
               </a>
               <div class="user">
@@ -20,37 +47,21 @@
                 <%= books[i].title %> <br>
                 Owned by <a href="/profile/<%= books[i].user %>"><b><%= books[i].user %></b></a></p>
               </div>
-            </div>
-            <!-- trade modal -->
-            <% if (typeof user !== "undefined") { %>
-            <div class="modal fade" id="tradeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">Send trade request</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <form class="trade_form" action="/trade/<%= books[i]._id %>" method="post">
-                      <div class="input-group">
-                        <input class="form-control" type="text" value="<%= user.username %>" name="trader" readonly>
-                      </div>
-                      <label for="comment">Share your info for <%= books[i].user %> to contact you:</label>
-                      <textarea class="form-control" rows="6" name="comment" placeholder="I'd like your book I'm free on saturday from 9 to 5. I live on the moon we can meet halfway, my mail is yada@yada.moon" required></textarea>
-                      <button id="submit" class="btn btn-default">Submit</button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <% } %>
+            </div>            
 
           <% } %>
         <% } %>
 
     </div><!-- /.container -->
+    <script>
+    $(document).ready(function() {
 
+      $('a[data-toggle=modal]').click(function () {
+        var book_id = $(this).attr('id');
+        $('#tradeForm').attr("action", "/trade/"+book_id);
+      })
+
+    });
+    </script>
   </body>
 </html>
