@@ -81,7 +81,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <h4>From: <p id="traderName"></p></h4>
+                  <h4 id="traderName"></h4>
                   <p id="traderText"></p>
                 </div>
               </div>
@@ -172,9 +172,9 @@
       }
     });
   });
-  function message(obj){
-    $("#traderName").text(obj[0]);
-    $("#traderText").text(obj[1]);
+  function message(a,b){
+    $("#traderName").text("From: "+ a);
+    $("#traderText").text(b);
   }
   </script>
   </body>
