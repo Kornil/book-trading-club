@@ -95,7 +95,7 @@
                 <p> <%= books[i].author %> <br>
                 <%= books[i].title %> </p>
               </div>
-              <% if (typeof books[i].wantedBy !== "undefined") { %>
+              <% if (books[i].wantedBy.length) { %>
               <i class="fa fa-envelope" aria-hidden="true" data-toggle="modal" data-target="#conversationsModal"></i>
               <% } %>
             </div>
