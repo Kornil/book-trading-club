@@ -6,7 +6,7 @@ var Book = new Schema({
   author: String,
   user: String,
   imageLink: String,
-  wantedBy: [],
+  wantedBy: [String],
 });
 
 module.exports = mongoose.model('Book', Book);
