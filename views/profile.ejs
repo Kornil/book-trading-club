@@ -98,7 +98,7 @@
               </div>
               <% if (books[i].wantedBy.length) { %>
               <i class="fa fa-envelope" aria-hidden="true"data-toggle="modal"
-              data-target="#conversationsModal" onClick="message(<%= toString(books[i].wantedBy[0]) %>,<%= toString(books[i].wantedBy[1]) %>)"></i>
+              data-target="#conversationsModal" onClick="message('<%= books[i].wantedBy[0] %>','<%= toString(books[i].wantedBy[1]) %>')"></i>
               <% } %>
             </div>
           <% } %>
