@@ -72,7 +72,14 @@ module.exports = function (app) {
       if (err) throw err;
       res.redirect('/profile');
     });
-  })
+  });
+
+  app.post('/trade/:bookid', function(req, res){
+    Book.findOneAndUpdate({_id: req.params.bookid}, {$push: {values: [req.body.trader, req.body.commet]} }, function(err, doc){
+      if (err) throw err;
+      res.redirect('/');
+    });
+  });
 
   app.get('/register', function(req, res) {
       res.render('register', { });
