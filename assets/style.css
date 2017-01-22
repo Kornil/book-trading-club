@@ -50,3 +50,8 @@ p {
 .user a {
   color: #000;
 }
+
+.fa-envelope {
+  position: absolute;
+  right: 10px;
+}
