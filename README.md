@@ -1,9 +1,7 @@
 # Book Trading club
 
-a network to share and trade your books online with people across the world.
+create your account, log in, publish your books (using google books api) and send trade requests to other users!
 
 
 ### TODO
-- db for books
-- trade options
-- send pms
+- respond to PMs
