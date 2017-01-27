@@ -1,16 +1,8 @@
 var passport = require('passport');
 var Account = require('../models/account');
 var Book = require('../models/book');
-var Yelp = require('yelp');
 
 module.exports = function (app) {
-
-  var yelp = new Yelp({
-    consumer_key: 'consumer-key',
-    consumer_secret: 'consumer-secret',
-    token: 'token',
-    token_secret: 'token-secret',
-  });
 
   app.use(require('body-parser').urlencoded({ extended: true }));
 
